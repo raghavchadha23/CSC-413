@@ -5,7 +5,7 @@
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // Address 0x27, 16 columns, 2 rows
 
 // Ingredient switch pins and their names
-const int switchPins[] = {8, 9, 10, 11, 12, 13};  // Six switches controlling six ingredients
+const int switchPins[] = {8, 9, 10, 11, 12, 13};  
 String ingredients[] = {"Rice", "Chicken", "Garlic", "Onion", "Cheese", "Tomato"};
 bool selectedIngredients[6] = {false, false, false, false, false, false};  // Track selected ingredients
 
