@@ -31,14 +31,55 @@ NutritionalInfo nutritionalData[] = {
   {"Medium", "High", "Low", "Medium", "Low"},   // Chicken Rice
   {"Low", "Medium", "Low", "Medium", "Low"},    // Rice Bowl with Chicken
   {"High", "High", "Medium", "High", "Medium"}, // Chicken Fried Rice
+  {"Medium", "High", "High", "Medium", "Low"},  // Chicken Jambalaya
+  {"High", "High", "Medium", "Medium", "Low"},  // Spicy Chicken Rice
+  {"Medium", "High", "Medium", "Medium", "Medium"}, // Chicken Biryani
+  {"Medium", "High", "Medium", "Medium", "Low"}, // Chicken Paella
+  {"Low", "High", "Low", "Medium", "Low"},      // Lemon Chicken Rice
+  {"High", "High", "High", "Medium", "Low"},    // Butter Chicken Rice
+  {"High", "Medium", "Low", "Medium", "Low"},   // Teriyaki Chicken Rice
   {"Low", "Medium", "Low", "Low", "Low"},       // Fried Rice
   {"Low", "Medium", "Low", "Medium", "Medium"}, // Rice Pilaf
-  {"Medium", "High", "Medium", "Low", "High"},  // Garlic Tomato Pasta
-  {"Low", "Low", "Low", "Medium", "Low"},       // Garlic Bread
+  {"Medium", "Low", "Low", "Low", "Medium"},    // Coconut Rice
+  {"Low", "Low", "Low", "Medium", "Low"},       // Turmeric Rice
+  {"Low", "Low", "Low", "Medium", "Medium"},    // Saffron Rice
+  {"Medium", "Low", "Low", "Low", "Low"},       // Garlic Butter Rice
+  {"Medium", "Low", "Low", "Low", "Low"},       // Spanish Rice
+  {"Low", "Low", "Low", "Low", "Medium"},       // Mushroom Rice
+  {"Medium", "Low", "Low", "Low", "Low"},       // Herbed Rice
+  {"Medium", "Medium", "Medium", "Low", "Medium"}, // Roasted Chicken
+  {"Medium", "Medium", "Low", "Low", "Low"},    // Grilled Chicken
+  {"Low", "Low", "Low", "Low", "Medium"},       // Chicken Soup
+  {"Medium", "Low", "Low", "Low", "Low"},       // Lemon Herb Chicken
+  {"High", "High", "Medium", "Low", "Medium"},  // Chicken Alfredo
+  {"Medium", "High", "High", "Low", "Low"},     // Butter Chicken
+  {"High", "Medium", "Low", "Medium", "Low"},   // Spicy Chicken Wings
+  {"High", "Medium", "Low", "Low", "Medium"},   // BBQ Chicken
+  {"Medium", "Low", "Low", "Low", "Medium"},    // Honey Garlic Chicken
+  {"Low", "Low", "Low", "Low", "Low"},          // Chicken Salad
+  {"Medium", "Low", "Low", "Low", "High"},      // Garlic Tomato Soup
+  {"Medium", "Medium", "Low", "Low", "Medium"}, // Tomato Garlic Pasta
+  {"Low", "Low", "Low", "Medium", "Medium"},    // Garlic Tomato Bruschetta
+  {"Low", "Low", "Low", "Medium", "Low"},       // Garlic Tomato Salad
+  {"Low", "Low", "Low", "Low", "High"},         // Garlic Roasted Tomatoes
+  {"Low", "Low", "Low", "Low", "Medium"},       // Tomato Garlic Dip
+  {"Low", "Low", "Low", "Medium", "High"},      // Tomato Garlic Shrimp
+  {"Medium", "Low", "Low", "Low", "Medium"},    // Garlic Tomato Rice
+  {"Medium", "Medium", "Low", "Medium", "Low"}, // Tomato Garlic Chicken
+  {"Low", "Low", "Low", "Low", "Medium"},       // Tomato Garlic Stir Fry
+  {"Low", "Low", "Low", "Low", "Medium"},       // Garlic Bread
   {"Medium", "Low", "Low", "Low", "Low"},       // Garlic Butter Shrimp
-  {"Low", "Low", "Low", "Medium", "Low"},       // Garlic Stir Fry
-  {"Low", "Low", "Low", "Low", "Low"},          // Onion Soup
-  {"Low", "Low", "Medium", "Low", "Low"},       // Caramelized Onion Tart
+  {"Low", "Low", "Low", "Low", "Medium"},       // Garlic Stir Fry
+  {"Medium", "Low", "Low", "Low", "Low"},       // Garlic Shrimp Scampi
+  {"Low", "Low", "Low", "Low", "Low"},          // Roasted Garlic
+  {"Low", "Low", "Low", "Low", "Low"},          // Garlic Parmesan Pasta
+  {"Low", "Low", "Low", "Low", "Low"},          // Garlic Mashed Potatoes
+  {"Low", "Low", "Low", "Low", "Low"},          // Garlic Soup
+  {"Low", "Low", "Low", "Low", "Low"},          // Garlic Butter Steak
+  {"Medium", "Low", "Low", "Low", "Low"},       // Garlic Herb Rice
+  {"Medium", "Low", "Low", "Low", "Medium"},    // French Onion Soup
+  {"Low", "Low", "Low", "Low", "Low"},          // Caramelized Onion Tart
+  {"Low", "Low", "Low", "Low", "Medium"},       // Onion Rings
   {"Medium", "Low", "High", "Low", "Low"},      // Onion Rings
   {"Medium", "Low", "High", "Low", "Medium"},   // Cheese Tomato Bruschetta
   {"Medium", "Medium", "High", "Medium", "Medium"}, // Tomato Cheese Pizza
@@ -48,8 +89,9 @@ NutritionalInfo nutritionalData[] = {
   {"Medium", "Low", "High", "Low", "Low"},      // Grilled Cheese
   {"Low", "Low", "Low", "Low", "Low"},          // Tomato Soup
   {"Low", "Low", "Low", "Low", "Medium"},       // Stuffed Tomatoes
-  {"Low", "Low", "Low", "Medium", "Low"}        // Tomato Salad
+  {"Low", "Low", "Low", "Medium", "Low"},       // Tomato Salad
 };
+
 
 
 unsigned long lastActionTime;
@@ -162,50 +204,69 @@ void displayDishName(String dishName) {
     }
   }
 }
-
 // Function to generate dish name based on selected ingredients with randomization
 String generateDishName() {
   String dish = "Mixed Salad";  // Default if no ingredients are selected
 
   if (selectedIngredients[0] && selectedIngredients[1]) {
-    String riceChickenDishes[] = {"Chicken Rice", "Rice Bowl with Chicken", "Chicken Fried Rice"};
-    dish = riceChickenDishes[random(0, 3)];
+    String riceChickenDishes[] = {"Chicken Rice", "Rice Bowl with Chicken", "Chicken Fried Rice", "Chicken Jambalaya", 
+                                  "Spicy Chicken Rice", "Chicken Biryani", "Chicken Paella", "Lemon Chicken Rice", 
+                                  "Butter Chicken Rice", "Teriyaki Chicken Rice"};
+    dish = riceChickenDishes[random(0, 10)];
   }
   else if (selectedIngredients[0]) {
-    String riceDishes[] = {"Fried Rice", "Rice Bowl", "Rice Pilaf"};
-    dish = riceDishes[random(0, 3)];
+    String riceDishes[] = {"Fried Rice", "Rice Bowl", "Rice Pilaf", "Coconut Rice", "Turmeric Rice", 
+                           "Saffron Rice", "Garlic Butter Rice", "Spanish Rice", "Mushroom Rice", "Herbed Rice"};
+    dish = riceDishes[random(0, 10)];
   }
   else if (selectedIngredients[1]) {
-    String chickenDishes[] = {"Roasted Chicken", "Grilled Chicken", "Chicken Soup"};
-    dish = chickenDishes[random(0, 3)];
+    String chickenDishes[] = {"Roasted Chicken", "Grilled Chicken", "Chicken Soup", "Lemon Herb Chicken", 
+                              "Chicken Alfredo", "Butter Chicken", "Spicy Chicken Wings", "BBQ Chicken", 
+                              "Honey Garlic Chicken", "Chicken Salad"};
+    dish = chickenDishes[random(0, 10)];
   }
   else if (selectedIngredients[2] && selectedIngredients[5]) {
-    String garlicTomatoDishes[] = {"Garlic Tomato Soup", "Tomato Garlic Pasta", "Garlic Tomato Bruschetta"};
-    dish = garlicTomatoDishes[random(0, 3)];
+    String garlicTomatoDishes[] = {"Garlic Tomato Soup", "Tomato Garlic Pasta", "Garlic Tomato Bruschetta", 
+                                   "Garlic Tomato Salad", "Garlic Roasted Tomatoes", "Tomato Garlic Dip", 
+                                   "Tomato Garlic Shrimp", "Garlic Tomato Rice", "Tomato Garlic Chicken", 
+                                   "Tomato Garlic Stir Fry"};
+    dish = garlicTomatoDishes[random(0, 10)];
   }
   else if (selectedIngredients[2]) {
-    String garlicDishes[] = {"Garlic Bread", "Garlic Butter Shrimp", "Garlic Stir Fry"};
-    dish = garlicDishes[random(0, 3)];
+    String garlicDishes[] = {"Garlic Bread", "Garlic Butter Shrimp", "Garlic Stir Fry", "Garlic Shrimp Scampi", 
+                             "Roasted Garlic", "Garlic Parmesan Pasta", "Garlic Mashed Potatoes", 
+                             "Garlic Soup", "Garlic Butter Steak", "Garlic Herb Rice"};
+    dish = garlicDishes[random(0, 10)];
   }
   else if (selectedIngredients[3]) {
-    String onionDishes[] = {"Onion Soup", "Caramelized Onion Tart", "Onion Rings"};
-    dish = onionDishes[random(0, 3)];
+    String onionDishes[] = {"French Onion Soup", "Caramelized Onion Tart", "Onion Rings", "Grilled Onions", 
+                            "Onion Chutney", "Onion Salad", "Pickled Onions", "Onion Dip", 
+                            "Stuffed Onions", "Onion Quiche"};
+    dish = onionDishes[random(0, 10)];
   }
   else if (selectedIngredients[4] && selectedIngredients[5]) {
-    String cheeseTomatoDishes[] = {"Cheese Tomato Bruschetta", "Tomato Cheese Pizza", "Cheesy Tomato Bake"};
-    dish = cheeseTomatoDishes[random(0, 3)];
+    String cheeseTomatoDishes[] = {"Cheese Tomato Bruschetta", "Tomato Cheese Pizza", "Cheesy Tomato Bake", 
+                                   "Cheese Stuffed Tomatoes", "Cheese Tomato Pasta", "Tomato Cheese Salad", 
+                                   "Cheese Tomato Tart", "Tomato Cheese Quesadilla", "Cheese Tomato Sandwich", 
+                                   "Tomato Cheese Soup"};
+    dish = cheeseTomatoDishes[random(0, 10)];
   }
   else if (selectedIngredients[4]) {
-    String cheeseDishes[] = {"Cheese Toast", "Cheese Fondue", "Grilled Cheese"};
-    dish = cheeseDishes[random(0, 3)];
+    String cheeseDishes[] = {"Cheese Toast", "Cheese Fondue", "Grilled Cheese", "Stuffed Cheese Mushrooms", 
+                             "Cheese Dip", "Cheese Balls", "Cheese Pasta", "Cheese Souffle", 
+                             "Cheese Pizza", "Cheese Omelette"};
+    dish = cheeseDishes[random(0, 10)];
   }
   else if (selectedIngredients[5]) {
-    String tomatoDishes[] = {"Tomato Soup", "Stuffed Tomatoes", "Tomato Salad"};
-    dish = tomatoDishes[random(0, 3)];
+    String tomatoDishes[] = {"Tomato Soup", "Stuffed Tomatoes", "Tomato Salad", "Tomato Basil Soup", 
+                             "Roasted Tomatoes", "Tomato Chutney", "Tomato Salsa", "Tomato Bruschetta", 
+                             "Tomato Tart", "Tomato Pasta"};
+    dish = tomatoDishes[random(0, 10)];
   }
 
   return dish;
 }
+
 // Function to determine and display nutrient concentration and type
 void displayNutritionalInfo() {
   int potValue = analogRead(potPin);  // Read potentiometer value
